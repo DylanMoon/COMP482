@@ -1,2 +1,9 @@
 
 .DS_Store
+
+Project1/out/*
+Project1/.idea/*
+Project2/out/*
+Project2/.idea/*
+Project3/out/*
+Project3/.idea/*
