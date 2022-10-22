@@ -1,0 +1,14 @@
+4
+3 5
+7 10
+1 11
+5 16
+
+output should be
+EDF 0
+SJF 1
+LSF 0
+because the schedules:
+•EDF = [(3,5),(7,10),(1,11),(5,16)] has all jobs on time.
+•SJF = [(1,11),(3,5),(5,16),(7,10)] has job (7,10) late.
+•LSF = [(3,5),(7,10),(1,11),(5,16)] has all jobs on time

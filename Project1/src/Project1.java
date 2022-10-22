@@ -35,6 +35,7 @@ public class Project1 {
             while (sc.hasNextInt()) {
                 result.add(sc.nextInt());
             }
+            sc.close();
             return Collections.unmodifiableList(result);
         } catch (Exception e) {
             System.err.println(e.getMessage());

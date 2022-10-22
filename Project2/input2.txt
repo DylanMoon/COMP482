@@ -1,0 +1,15 @@
+5
+2 3
+4 7
+6 15
+1 6
+7 14
+
+output should be
+EDF 1
+SJF 1
+LSF 1
+because the schedules:
+•EDF = [(2,3),(1,6),(4,7),(7,14),(6,15)] has job (7,16) late.
+•SJF = [(1,6),(2,3),(4,7),(6,13),(7,16)] has job (7,16) late.
+•LSF = [(2,3),(4,7),(1,6),(7,14),(6,15)] has job (6,15) late
