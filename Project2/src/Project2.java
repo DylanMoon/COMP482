@@ -1,5 +1,5 @@
 // Dylan Moon
-// Project 1
+// Project 2
 // 11/9/2022
 
 import java.io.*;
