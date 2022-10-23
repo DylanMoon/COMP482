@@ -12,13 +12,10 @@ public class Project2 {
     public static void main(String[] args) {
         final var jobs = GetInput();
         ProcessJobs(jobs, new EarliestDeadlineFirst());
-        System.out.println();
+//        System.out.println();
         ProcessJobs(jobs, new ShortestJobFirst());
-        System.out.println();
+//        System.out.println();
         ProcessJobs(jobs, new LeastSlackFirst());
-
-        //TODO: will the jobs ever have the same processing time/deadline so that a stable sort alters answer? (from previous sorts)
-        // probably wouldn't matter for the first two, might for the third
     }
 
     /**
@@ -28,14 +25,12 @@ public class Project2 {
      * @author Dylan Moon
      */
     private static List<Job> GetInput() {
-        try {
-            var sc = new Scanner(new File(INPUT_FILE));
+        try (var sc = new Scanner(new File(INPUT_FILE))){
             var result = new ArrayList<Job>();
             var count = sc.nextInt();
             for (int i = 0; i < count; i++) {
                 result.add(new Job(sc.nextInt(), sc.nextInt()));
             }
-            sc.close();
             return result;
         } catch (Exception e) {
             System.err.println(e.getMessage());
@@ -68,7 +63,7 @@ public class Project2 {
         var endTime = currentTime + current.processingTime;
         var late = endTime <= current.deadline ? 0 : 1;
 
-        System.out.println(current + " completes at time: " + endTime + "\tlate: " + late);
+//        System.out.println(current + " completes at time: " + endTime + "\tlate: " + late);
 
         return CountLateJobs(jobList, index + 1, numLate + late, endTime);
     }
