@@ -12,9 +12,7 @@ public class Project2 {
     public static void main(String[] args) {
         final var jobs = GetInput();
         ProcessJobs(jobs, new EarliestDeadlineFirst());
-//        System.out.println();
         ProcessJobs(jobs, new ShortestJobFirst());
-//        System.out.println();
         ProcessJobs(jobs, new LeastSlackFirst());
     }
 
@@ -63,7 +61,7 @@ public class Project2 {
         var endTime = currentTime + current.processingTime;
         var late = endTime <= current.deadline ? 0 : 1;
 
-//        System.out.println(current + " completes at time: " + endTime + "\tlate: " + late);
+//        System.out.println(current + " completes at time: " + endTime + (late > 0 ? " late" : ""));
 
         return CountLateJobs(jobList, index + 1, numLate + late, endTime);
     }
@@ -99,7 +97,7 @@ final class Job {
 
 /**
  * Compares {@link Job} deadlines
- * @see EarliestDeadlineFirst#toString()
+ * @implNote Overrides {@link #toString()} for specifying method.
  * @author Dylan Moon
  */
 final class EarliestDeadlineFirst implements Comparator<Job> {
@@ -119,7 +117,7 @@ final class EarliestDeadlineFirst implements Comparator<Job> {
 
 /**
  * Compares {@link Job} processing times
- * @see ShortestJobFirst#toString()
+ * @implNote Overrides {@link #toString()} for specifying method.
  * @author Dylan Moon
  */
 final class ShortestJobFirst implements Comparator<Job> {
@@ -139,7 +137,7 @@ final class ShortestJobFirst implements Comparator<Job> {
 
 /**
  * Compares {@link Job} slack
- * @see LeastSlackFirst#toString()
+ * @implNote Overrides {@link #toString()} for specifying method.
  * @author Dylan Moon
  */
 final class LeastSlackFirst implements Comparator<Job> {

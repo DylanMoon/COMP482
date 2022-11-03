@@ -6,9 +6,9 @@
 
 output should be
 EDF 2
-SJF 2
+SJF 3
 LSF 3
 because the schedules:
 •EDF = [(2,2),(1,3),(3,4),(4,7)] has jobs (3,4) and (4,7) late.
-•SJF = [(1,3),(2,2),(3,4),(4,7)] has jobs (3,4) and (4,7) late.
+•SJF = [(1,3),(2,2),(3,4),(4,7)] has jobs (2,2), (3,4) and (4,7) late.
 •LSF = [(2,2),(3,4),(1,3),(4,7)] has jobs (3,4), (1,3), and (4,7) late

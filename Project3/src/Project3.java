@@ -12,6 +12,7 @@ import java.util.HashMap;
 public class Project3 {
     public static void main(String[] args) throws IOException {
         var input = Integer.parseInt(Files.readAllLines(Paths.get("input.txt")).get(0));
+        System.out.println(input);
         var cn = new CatalanNumber();
         System.out.println(cn.Calculate(input));
     }
