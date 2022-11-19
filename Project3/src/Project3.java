@@ -14,8 +14,10 @@ public class Project3 {
     public static void main(String[] args) {
         final var input = GetInput();
         System.out.println(input);
-        System.out.println("Target :" + input.target);
-        BinarySearch2d(input.target, input.arr);
+//        System.out.println("Target :" + input.target);
+//        BinarySearch2d(input.targe1, input.arr);
+
+
     }
 
     /**
@@ -65,6 +67,38 @@ public class Project3 {
             var r3 = BinarySearch2dRecursive(target, arr, row, rub, clb, column - 1);
         }
         return new ArrayList<>(){{add(false);}};
+    }
+
+    private static ArrayList<Object> RowBinarySearch(final int target, final int[][] arr, final int lowerBound, final int upperBound, final int row){
+        if(lowerBound > upperBound) return new ArrayList<Object>(){{add(false);}};
+        if(lowerBound == upperBound) return arr[row][lowerBound] == target ? new ArrayList<Object>(){{add(true);add(row);add(lowerBound);}} : new ArrayList<>(){{add(false);}};
+        var index = (lowerBound + upperBound) /2;
+        var curr = arr[row][index];
+        if(curr == target){
+            return new ArrayList<>(){{add(true);add(row);add(index);}};
+        }
+        else if(curr < target){
+            return RowBinarySearch(target, arr, index + 1, upperBound, row);
+        }
+        else {
+            return RowBinarySearch(target, arr, lowerBound, index -1, row);
+        }
+    }
+
+    private static ArrayList<Object> ColumnBinarySearch(final int target, final int[][] arr, final int lowerBound, final int upperBound, final int column){
+        if(lowerBound > upperBound) return new ArrayList<Object>(){{add(false);}};
+        if(lowerBound == upperBound) return arr[lowerBound][column] == target ? new ArrayList<Object>(){{add(true);add(lowerBound);add(column);}} : new ArrayList<>(){{add(false);}};
+        var index = (lowerBound + upperBound) /2;
+        var curr = arr[index][column];
+        if(curr == target){
+            return new ArrayList<>(){{add(true);add(index);add(column);}};
+        }
+        else if(curr < target){
+            return ColumnBinarySearch(target, arr, index + 1, upperBound, column);
+        }
+        else {
+            return ColumnBinarySearch(target, arr, lowerBound, index -1, column);
+        }
     }
 }
 
