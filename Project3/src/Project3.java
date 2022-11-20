@@ -45,13 +45,9 @@ public class Project3 {
     }
 
     public static String BinarySearch2d(final int target, final int[][] arr){
-//        numCalls = 0;
-        var result = BinarySearch2dRecursive(target, arr, 0, arr.length -1, 0, arr[0].length -1);
-//        System.out.println("Number of calls: " + numCalls);
-        return result.toString();
+        return BinarySearch2dRecursive(target, arr, 0, arr.length -1, 0, arr[0].length -1).toString();
     }
     private static Result BinarySearch2dRecursive(final int target, final int[][] arr, final int rlb, final int rub, final int clb, final int cub){
-//        numCalls++;
         if(rub < rlb || cub < clb)return Result.NotFound();
         if(rub == rlb) return RowBinarySearch(target, arr, clb, cub, rub);
         if(cub == clb) return ColumnBinarySearch(target, arr, rlb, rub, cub);
@@ -76,7 +72,6 @@ public class Project3 {
     }
 
     private static Result RowBinarySearch(final int target, final int[][] arr, final int lowerBound, final int upperBound, final int row){
-//        numCalls++;
         if(lowerBound > upperBound) return Result.NotFound();
         if(lowerBound == upperBound) return arr[row][lowerBound] == target ?
                 Result.Found(row, lowerBound):
@@ -95,7 +90,6 @@ public class Project3 {
     }
 
     private static Result ColumnBinarySearch(final int target, final int[][] arr, final int lowerBound, final int upperBound, final int column){
-//        numCalls++;
         if(lowerBound > upperBound) return Result.NotFound();
         if(lowerBound == upperBound) return arr[lowerBound][column] == target ?
                 Result.Found(lowerBound, column):
