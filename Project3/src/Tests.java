@@ -1,7 +1,7 @@
 public class Tests {
 
     public static void main(String[] args) {
-        var arr = new int[100][100];
+        var arr = new int[100][1000];
         var count = 0;
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr[0].length; j++) {
@@ -15,7 +15,7 @@ public class Tests {
             System.out.println();
         }*/
         var startTime = System.nanoTime();
-//        var curr = -1;
+        var curr = -1;
 //        while(curr <= count){
 //            System.out.println(Project3.BinarySearch2d(curr++, arr));
 //            Project3.BinarySearch2d(curr++, arr);

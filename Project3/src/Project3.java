@@ -10,8 +10,6 @@ public class Project3 {
     //TODO: DO NOT FORGET TO SET INPUT_FILE TO "input.txt" BEFORE SUBMITTING
     final static String INPUT_FILE = "input.txt";
 
-    private static int numCalls;
-
     public static void main(String[] args) {
 
         final var input = GetInput();
@@ -44,9 +42,29 @@ public class Project3 {
         }
     }
 
+    /**
+     * Entry point for a binary(ish) search of a 2D array
+     * @param target {@link Integer} that is the search target
+     * @param arr 2D array to be searched
+     * @return {@link String} 1 indexed coordinates of the target or 'NOT FOUND' if not found
+     * @author Dylan Moon
+     */
     public static String BinarySearch2d(final int target, final int[][] arr){
         return BinarySearch2dRecursive(target, arr, 0, arr.length -1, 0, arr[0].length -1).toString();
     }
+
+
+    /**
+     * Recursive case for a 2D array binary(ish) search
+     * @param target {@link Integer} that is the search target
+     * @param arr 2D array to be searched
+     * @param rlb Row Lower Bound - 0 based index
+     * @param rub Row Upper Bound - 0 based index
+     * @param clb Column Lower Bound - 0 based index
+     * @param cub Column Upper Bound - 0 based index
+     * @return {@link Result}: {@link Found} if found, {@link NotFound} if not found
+     * @author Dylan Moon
+     */
     private static Result BinarySearch2dRecursive(final int target, final int[][] arr, final int rlb, final int rub, final int clb, final int cub){
         if(rub < rlb || cub < clb)return Result.NotFound();
         if(rub == rlb) return RowBinarySearch(target, arr, clb, cub, rub);
@@ -71,6 +89,16 @@ public class Project3 {
         }
     }
 
+    /**
+     * Standard Binary search in a single row
+     * @param target {@link Integer} that is the search target
+     * @param arr 2D array to be searched
+     * @param lowerBound 0 based index column lower bound
+     * @param upperBound 0 based index column upper bound
+     * @param row the row to be searched
+     * @return {@link Result}: {@link Found} if found, {@link NotFound} if not found
+     * @author Dylan Moon
+     */
     private static Result RowBinarySearch(final int target, final int[][] arr, final int lowerBound, final int upperBound, final int row){
         if(lowerBound > upperBound) return Result.NotFound();
         if(lowerBound == upperBound) return arr[row][lowerBound] == target ?
@@ -89,6 +117,16 @@ public class Project3 {
         }
     }
 
+    /**
+     * Standard Binary search in a single column
+     * @param target {@link Integer} that is the search target
+     * @param arr 2D array to be searched
+     * @param lowerBound 0 based index row lower bound
+     * @param upperBound 0 based index row upper bound
+     * @param column the column to be searched
+     * @return {@link Result}: {@link Found} if found, {@link NotFound} if not found
+     * @author Dylan Moon
+     */
     private static Result ColumnBinarySearch(final int target, final int[][] arr, final int lowerBound, final int upperBound, final int column){
         if(lowerBound > upperBound) return Result.NotFound();
         if(lowerBound == upperBound) return arr[lowerBound][column] == target ?
@@ -107,6 +145,11 @@ public class Project3 {
         }
     }
 }
+
+
+/**
+ * Abstract class for the result pattern
+ */
 abstract class Result{
     public static Result Found(final int row, final int column){
         return new Found(row, column);
@@ -116,6 +159,10 @@ abstract class Result{
     }
 }
 
+/**
+ * Result returned if target is found.
+ * Uses toString() to return the 1 indexed coordinates of the target
+ */
 final class Found extends Result{
     final int Row;
     final int Column;
@@ -129,6 +176,10 @@ final class Found extends Result{
     }
 }
 
+/**
+ * Result returned if target is not found.
+ * Uses toString() to return the message 'NOT FOUND'
+ */
 final class NotFound extends Result{
     @Override
     public String toString() {
@@ -136,6 +187,10 @@ final class NotFound extends Result{
     }
 }
 
+
+/**
+ * Class used to 'deserialize' the input into
+ */
 final class ArrayAndTarget {
     final int rows;
     final int columns;
